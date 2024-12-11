@@ -11,7 +11,7 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 class CarMake(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField()
-    # Other fields as nedded
+    # Other fields as needed
     country_of_origin = models.CharField(max_length=100, blank=True, null=True)
     website = models.URLField(blank=True, null=True )
 
@@ -19,12 +19,50 @@ class CarMake(models.Model):
         return self.name # Return the name as the string representation.
 
 
-# <HINT> Create a Car Model model `class CarModel(models.Model):`:
-# - Many-To-One relationship to Car Make model (One Car Make has many
-# Car Models, using ForeignKey field)
-# - Name
-# - Type (CharField with a choices argument to provide limited choices
-# such as Sedan, SUV, WAGON, etc.)
-# - Year (IntegerField) with min value 2015 and max value 2023
-# - Any other fields you would like to include in car model
-# - __str__ method to print a car make object
+# CarModel model
+class CarModel(models.Model):
+    car_make = models.ForeignKey(CarMake, on_delete=models.CASCADE) # Many-to-One relationship
+    name = models.CharField(max_length=100)
+    CAR_TYPES = [
+        ('SEDAN', 'Sedan'),
+        ('SUV', 'SUV'),
+        ('WAGON', 'Wagon'),
+        # Add more choices, as required
+        ('COUPE', 'Coupe'),
+        ('HATCHBACK', 'Hatchback'),
+        ('HYBRID', 'Hybrid'),
+    ]
+    type = models.CharField(max_length=10, choices=CAR_TYPES, default='SUV')
+    year = models.IntegerField(default=2023,
+        validators=[
+            MaxValueValidator(2023),
+            MinValueValidator(2015)
+        ])
+    # Other fields as needed
+    dealer_id = models.IntegerField(default=1)
+    seating_capacity = models.IntegerField(default=4)
+    number_of_doors = models.IntegerField(default=4)
+    transmission = models.CharField(max_length=9, default='manual')
+
+    FUEL_TYPES = [
+        ('PETROL', 'Petrol'),
+        ('DIESEL', 'Diesel'),
+        ('HYBRID/PETROL', 'Hybrid/Petrol'),
+        ('HYBRID/DIESEL', 'Hybrid/Diesel'),
+        ('GAS', 'Gas'),
+        ('ELECTRIC', 'Electric'),
+    ]
+    fuel = models.CharField(max_length=13, choices=FUEL_TYPES, default='Petrol')
+    mileage = models.IntegerField(default=60000,
+        validators=[
+            MaxValueValidator(3999999)
+            MinValueValidator(0)
+        ])
+    engine_size = models.IntegerField(default=2000,
+        validators=[
+            MaxValueValidator(8000),
+            MinValueValidator(500),
+        ])
+
+    def __str__(self):
+        return self.name # Return the name as the string representation
