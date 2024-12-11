@@ -55,13 +55,13 @@ class CarModel(models.Model):
     fuel = models.CharField(max_length=13, choices=FUEL_TYPES, default='Petrol')
     mileage = models.IntegerField(default=60000,
         validators=[
-            MaxValueValidator(3999999)
+            MaxValueValidator(3999999),
             MinValueValidator(0)
         ])
     engine_size = models.IntegerField(default=2000,
         validators=[
             MaxValueValidator(8000),
-            MinValueValidator(500),
+            MinValueValidator(500)
         ])
 
     def __str__(self):
