@@ -12,7 +12,9 @@ class CarMake(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField()
     # Other fields as nedded
-    
+    country_of_origin = models.CharField(max_length=100, blank=True, null=True)
+    website = models.URLField(blank=True, null=True )
+
     def __str__(self):
         return self.name # Return the name as the string representation.
 
