@@ -2,16 +2,16 @@ from .models import CarMake, CarModel
 
 def initiate():
     car_make_data = [
-        {"name":"NISSAN", "description":"Great cars. Japanese technology"},
-        {"name":"Mercedes", "description":"Great cars. German technology"},
-        {"name":"Audi", "description":"Great cars. German technology"},
-        {"name":"Kia", "description":"Great cars. Korean technology"},
-        {"name":"Toyota", "description":"Great cars. Japanese technology"},
+        {"name":"NISSAN", "description":"Great cars. Japanese technology", "website":"https://www.nissan-global.com/"},
+        {"name":"Mercedes", "description":"Great cars. German technology", "website":"https://www.mercedes-benz.com/"},
+        {"name":"Audi", "description":"Great cars. German technology", "website":"https://www.audi.com/"},
+        {"name":"Kia", "description":"Great cars. Korean technology", "website":"https://www.kia.com/"},
+        {"name":"Toyota", "description":"Great cars. Japanese technology" "website":"https://www.toyota-global.com/"},
     ]
 
     car_make_instances = []
     for data in car_make_data:
-            car_make_instances.append(CarMake.objects.create(name=data['name'], description=data['description']))
+            car_make_instances.append(CarMake.objects.create(name=data['name'], description=data['description'], website=data['website']))
 
 
     # Create CarModel instances with the corresponding CarMake instances
