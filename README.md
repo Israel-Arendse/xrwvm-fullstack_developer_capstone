@@ -1,4 +1,4 @@
-# Capstone Project For Israel Arendse
+# Capstone Project For Israel Arendse - 2024
 
 
 ## Module-1: Static Pages
@@ -43,3 +43,51 @@
 
 ** Fetch Dealers by location **
 ![kansasDealers](https://github.com/user-attachments/assets/efda8b58-b4bc-4040-9cca-ba5631778af9)
+
+### Django Models and Proxy Services
+
+As part of the project, additional fields have been added to the Django models 'CarMake' and 'CarModel'. Below are the details of these new fields.
+
+**CarMake Model:**
+- `website = models.URLField(blank=True, null=True)`
+  - This field stores the official website URL for the car make. It is optional and can be left blank or set to null.
+
+**CarModel Model:**
+- `CAR_TYPES` field has been updated with new choices:
+  ```python
+  CAR_TYPES = [
+      ('COUPE', 'Coupe'),
+      ('HATCHBACK', 'Hatchback'),
+      ('HYBRID', 'Hybrid'),
+      # Add more choices as required
+  ]
+
+There are other fields created in the 'CarModel' include:
+
+```
+       # Other fields as needed
+       dealer_id = models.IntegerField(default=1)
+       seating_capacity = models.IntegerField(default=4)
+       number_of_doors = models.IntegerField(default=4)
+       transmission = models.CharField(max_length=9, default='manual')
+
+        FUEL_TYPES = [
+            ('PETROL', 'Petrol'),
+            ('DIESEL', 'Diesel'),
+            ('HYBRID/PETROL', 'Hybrid/Petrol'),
+            ('HYBRID/DIESEL', 'Hybrid/Diesel'),
+            ('GAS', 'Gas'),
+            ('ELECTRIC', 'Electric'),
+        ]
+        fuel = models.CharField(max_length=13, choices=FUEL_TYPES, default='Petrol')
+        mileage = models.IntegerField(default=60000,
+            validators=[
+                MaxValueValidator(3999999),
+                MinValueValidator(0)
+            ])
+        engine_size = models.IntegerField(default=2000,
+            validators=[
+                MaxValueValidator(8000),
+                MinValueValidator(500)
+            ])
+```
