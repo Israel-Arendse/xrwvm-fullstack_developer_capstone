@@ -46,26 +46,23 @@
 
 ### Django Models and Proxy Services
 
-** CarMake and CarModel **
+As part of the project, additional fields have been added to the Django models 'CarMake' and 'CarModel'. Below are the details of these new fields.
 
-As the project allowed me to add additional fields to the Django models 'CarMake' and 'CarModel', here is what I created.
+**CarMake Model:**
+- `website = models.URLField(blank=True, null=True)`
+  - This field stores the official website URL for the car make. It is optional and can be left blank or set to null.
 
-In the 'CarMake' model, the new field created is 
+**CarModel Model:**
+- `CAR_TYPES` field has been updated with new choices:
+  ```python
+  CAR_TYPES = [
+      ('COUPE', 'Coupe'),
+      ('HATCHBACK', 'Hatchback'),
+      ('HYBRID', 'Hybrid'),
+      # Add more choices as required
+  ]
 
-```
-website = models.URLFiedl(blank=True, null=True)
-```
-
-For the 'CarModel' model, the CAR_TYPES field has been updated with the following choices:
-
-```
-        # Add more choices, as required
-        ('COUPE', 'Coupe'),
-        ('HATCHBACK', 'Hatchback'),
-        ('HYBRID', 'Hybrid'),
-```
-
-There are other fields created in the 'CarModel' including:
+There are other fields created in the 'CarModel' include:
 
 ```
        # Other fields as needed
