@@ -30,6 +30,10 @@ def initiate():
         {"name":"Camry", "type":"Sedan", "year": 2023, "car_make":car_make_instances[4], "dealer_id":5, "seating_capacity":5, "number_of_doors":4, "transmission":"automatic", "fuel":"Diesel", "mileage":19000, "engine_size":2500},
         {"name":"Kluger", "type":"SUV", "year": 2023, "car_make":car_make_instances[4], "dealer_id":5, "seating_capacity":7, "number_of_doors":5, "transmission":"automatic", "fuel":"Hybrid/Diesel", "mileage":17000, "engine_size":3200},
         # Add more CarModel instances as needed
+        {"name":"A7", "type":"Hybrid", "year": 2023, "car_make":car_make_instances[5], "dealer_id":3, "seating_capacity":5, "number_of_doors":5, "transmission":"automatic", "fuel":"Hybrid/Diesel", "mileage":35000, "engine_size":1984},
+        {"name":"Picanto", "type":"Hatchback", "year": 2024, "car_make":car_make_instances[5], "dealer_id":4, "seating_capacity":5, "number_of_doors":5, "transmission":"automatic", "fuel":"Petrol", "mileage":35000, "engine_size":1197},
+        {"name":"C-300", "type":"Coupe", "year": 2023, "car_make":car_make_instances[5], "dealer_id":2, "seating_capacity":4, "number_of_doors":2, "transmission":"manual", "fuel":"Petrol", "mileage":35000, "engine_size":1991},  
+    ]
     ]
 
     for data in car_model_data:
