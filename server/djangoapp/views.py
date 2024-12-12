@@ -98,7 +98,13 @@ def get_cars(request):
 
 # # Update the `get_dealerships` view to render the index page with
 # a list of dealerships
-# def get_dealerships(request):
+def get_dealerships(request, state="ALL"):
+    if(state == "ALL"):
+        endpoint = "/fetchDealers"
+    else:
+        endpoint = "/fetchDealers" + state
+    dealerships = get_request(endpoint)
+    return JsonResponse({"status":200,"dealers":dealerships})
 # ...
 
 # Create a `get_dealer_reviews` view to render the reviews of a dealer
