@@ -46,7 +46,7 @@
 
 ### Django Models and Proxy Services
 
-### CarMake and CarModel
+** CarMake and CarModel **
 
 As the project allowed me to add additional fields to the Django models 'CarMake' and 'CarModel', here is what I created.
 
