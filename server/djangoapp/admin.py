@@ -8,6 +8,7 @@ admin.site.register(CarModel)
 
 # CarModelInline class
 
+
 # CarModelAdmin class
 class CarModelAdmin(admin.ModelAdmin):
     list_display = ('name', 'car_make', 'type', 'year', 'dealer_id', 'seating_capacity', 'number_of_doors', 'transmission', 'fuel', 'mileage', 'engine_size')
@@ -15,5 +16,8 @@ class CarModelAdmin(admin.ModelAdmin):
     search_fields = ('name', 'car_make_name', 'type', 'transmission', 'fuel')
 
 # CarMakeAdmin class with CarModelInline
+class CarMakeAdmin(admin.ModelAdmin):
+    list_display = ('name', 'description', 'website')
+    search_fields = ('name', 'description')
 
 # Register models here
