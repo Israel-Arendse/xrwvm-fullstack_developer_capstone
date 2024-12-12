@@ -6,7 +6,7 @@ def initiate():
         {"name":"Mercedes", "description":"Great cars. German technology", "website":"https://www.mercedes-benz.com/"},
         {"name":"Audi", "description":"Great cars. German technology", "website":"https://www.audi.com/"},
         {"name":"Kia", "description":"Great cars. Korean technology", "website":"https://www.kia.com/"},
-        {"name":"Toyota", "description":"Great cars. Japanese technology". "website":"https://www.toyota-global.com/"},
+        {"name":"Toyota", "description":"Great cars. Japanese technology", "website":"https://www.toyota-global.com/"},
     ]
 
     car_make_instances = []
