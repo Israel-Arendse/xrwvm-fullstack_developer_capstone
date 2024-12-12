@@ -1,4 +1,4 @@
-# Capstone Project For Israel Arendse
+# Capstone Project For Israel Arendse - 2024
 
 
 ## Module-1: Static Pages
@@ -43,3 +43,54 @@
 
 ** Fetch Dealers by location **
 ![kansasDealers](https://github.com/user-attachments/assets/efda8b58-b4bc-4040-9cca-ba5631778af9)
+
+### Django Models and Proxy Services
+
+### CarMake and CarModel
+
+As the project allowed me to add additional fields to the Django models 'CarMake' and 'CarModel', here is what I created.
+
+In the 'CarMake' model, the new field created is 
+
+```
+website = models.URLFiedl(blank=True, null=True)
+```
+
+For the 'CarModel' model, the CAR_TYPES field has been updated with the following choices:
+
+```
+        # Add more choices, as required
+        ('COUPE', 'Coupe'),
+        ('HATCHBACK', 'Hatchback'),
+        ('HYBRID', 'Hybrid'),
+```
+
+There are other fields created in the 'CarModel' including:
+
+```
+       # Other fields as needed
+       dealer_id = models.IntegerField(default=1)
+       seating_capacity = models.IntegerField(default=4)
+       number_of_doors = models.IntegerField(default=4)
+       transmission = models.CharField(max_length=9, default='manual')
+
+        FUEL_TYPES = [
+            ('PETROL', 'Petrol'),
+            ('DIESEL', 'Diesel'),
+            ('HYBRID/PETROL', 'Hybrid/Petrol'),
+            ('HYBRID/DIESEL', 'Hybrid/Diesel'),
+            ('GAS', 'Gas'),
+            ('ELECTRIC', 'Electric'),
+        ]
+        fuel = models.CharField(max_length=13, choices=FUEL_TYPES, default='Petrol')
+        mileage = models.IntegerField(default=60000,
+            validators=[
+                MaxValueValidator(3999999),
+                MinValueValidator(0)
+            ])
+        engine_size = models.IntegerField(default=2000,
+            validators=[
+                MaxValueValidator(8000),
+                MinValueValidator(500)
+            ])
+```
