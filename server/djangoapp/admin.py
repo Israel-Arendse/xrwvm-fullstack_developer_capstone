@@ -1,10 +1,10 @@
 from django.contrib import admin
 from .models import CarMake, CarModel
 
-
-# Register your models class here.
-
 # CarModelInline class
+class CarModelInline(admin.TabularInline):
+    model = CarModel
+    extra = 1
 
 # CarModelAdmin class
 class CarModelAdmin(admin.ModelAdmin):
@@ -16,6 +16,7 @@ class CarModelAdmin(admin.ModelAdmin):
 class CarMakeAdmin(admin.ModelAdmin):
     list_display = ('name', 'description', 'website')
     search_fields = ('name', 'description')
+    inlines = [CarModelInline]
 
 # Register models here
 admin.site.register(CarMake, CarMakeAdmin)
