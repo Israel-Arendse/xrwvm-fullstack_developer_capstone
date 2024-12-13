@@ -5,6 +5,9 @@ from .models import CarMake, CarModel
 # Register your models class here.
 
 # CarModelInline class
+class CarModelInline(admin.TabularInline):
+    model = CarModel
+    extra = 1
 
 # CarModelAdmin class
 class CarModelAdmin(admin.ModelAdmin):
