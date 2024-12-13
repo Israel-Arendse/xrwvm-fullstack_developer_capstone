@@ -50,3 +50,5 @@ def initiate():
             mileage=data['mileage'],
             engine_size=data['engine_size']
         )
+        # Print statement
+        print(f"Created CarModel: {data['name']} of type {data['type']}")
