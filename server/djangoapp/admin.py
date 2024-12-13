@@ -19,6 +19,7 @@ class CarModelAdmin(admin.ModelAdmin):
 class CarMakeAdmin(admin.ModelAdmin):
     list_display = ('name', 'description', 'website')
     search_fields = ('name', 'description')
+    inlines = [CarModel]
 
 # Register models here
 admin.site.register(CarMake, CarMakeAdmin)
