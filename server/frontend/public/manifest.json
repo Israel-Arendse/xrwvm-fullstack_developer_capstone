@@ -1,6 +1,6 @@
 {
-  "manifest_version": 2,   // Added manifest_version
-  "version": "1.0.0",      // Added version
+  "manifest_version": 2,  
+  "version": "1.0.0",      
   "short_name": "React App",
   "name": "Create React App Sample",
   "icons": [
