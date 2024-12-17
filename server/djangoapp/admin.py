@@ -13,7 +13,7 @@ class CarModelInline(admin.TabularInline):
     """
     Inline admin descriptor for CarModel objects,
     to be used in the CarMakeAdmin.
-    This allows CarModel objects to be edited 
+    This allows CarModel objects to be edited
     inline within the CarMake admin page.
     """
     model = CarModel
@@ -22,9 +22,9 @@ class CarModelInline(admin.TabularInline):
 
 class CarModelAdmin(admin.ModelAdmin):
     """
-    Admin descriptor for CarModel objects, 
+    Admin descriptor for CarModel objects,
     defining the fields to display in the list view,
-    filters for easy data sorting, 
+    filters for easy data sorting,
     and search fields within the Django admin interface.
     """
     list_display = (
@@ -42,9 +42,9 @@ class CarModelAdmin(admin.ModelAdmin):
 
 class CarMakeAdmin(admin.ModelAdmin):
     """
-    Admin descriptors for CarMake objects, 
+    Admin descriptors for CarMake objects,
     defining the fields to display in the list view,
-    search fields, and inline editing of 
+    search fields, and inline editing of
     related CarModel objects within
     the Django admin interface.
     """
@@ -57,5 +57,6 @@ class CarMakeAdmin(admin.ModelAdmin):
     ]  # Allows CarModel objects to be edited inline within CarMake
 
 # Register models here
+
 admin.site.register(CarMake, CarMakeAdmin)
 admin.site.register(CarModel, CarModelAdmin)
