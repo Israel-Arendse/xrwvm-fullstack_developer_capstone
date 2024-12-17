@@ -21,30 +21,28 @@ class CarMake(models.Model):
 
 # CarModel model
 class CarModel(models.Model):
-    car_make = models.ForeignKey(CarMake, on_delete=models.CASCADE) # Many-to-One relationship
+    car_make = models.ForeignKey(CarMake, on_delete=models.CASCADE)  # Many-to-One relationship
     name = models.CharField(max_length=100)
     CAR_TYPES = [
         ('SEDAN', 'Sedan'),
         ('SUV', 'SUV'),
         ('WAGON', 'Wagon'),
-        # Add more choices, as required
         ('COUPE', 'Coupe'),
         ('HATCHBACK', 'Hatchback'),
         ('HYBRID', 'Hybrid'),
     ]
     type = models.CharField(max_length=10, choices=CAR_TYPES, default='SUV')
-    year = models.IntegerField(default=2023,
+    year = models.IntegerField(
+        default=2023,
         validators=[
             MaxValueValidator(2023),
             MinValueValidator(2015)
-        ])
-    
-    # Other fields as needed
+        ]
+    )
     dealer_id = models.IntegerField(default=1)
     seating_capacity = models.IntegerField(default=4)
     number_of_doors = models.IntegerField(default=4)
     transmission = models.CharField(max_length=9, default='manual')
-
     FUEL_TYPES = [
         ('PETROL', 'Petrol'),
         ('DIESEL', 'Diesel'),
@@ -54,18 +52,23 @@ class CarModel(models.Model):
         ('ELECTRIC', 'Electric'),
     ]
     fuel = models.CharField(max_length=13, choices=FUEL_TYPES, default='Petrol')
-    mileage = models.IntegerField(default=60000,
+    mileage = models.IntegerField(
+        default=60000,
         validators=[
             MaxValueValidator(3999999),
             MinValueValidator(0)
-        ])
-    engine_size = models.IntegerField(default=2000,
+        ]
+    )
+    engine_size = models.IntegerField(
+        default=2000,
         validators=[
             MaxValueValidator(8000),
             MinValueValidator(500)
-        ])
+        ]
+    )
+    created_at = models.DateTimeField(default=now)  # Use 'now' for default value
+    updated_at = models.DateTimeField(auto_now=True)  # Automatically update timestamp
 
     def __str__(self):
         return self.name
-        
     # Return the name as the string representation
