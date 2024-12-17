@@ -1,7 +1,6 @@
 from django.shortcuts import render
-from django.http import JsonResponse
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
-from django.contrib.auth import logout, login, authenticate
 from django.contrib import messages
 from datetime import datetime
 import logging
@@ -14,77 +13,64 @@ from .restapis import get_request, analyze_review_sentiments, post_review
 # Get an instance of a logger
 logger = logging.getLogger(__name__)
 
-# Create your views here.
-
-
-# Create a `login_request` view to handle sign-in request
 @csrf_exempt
 def login_user(request):
-    data = json.loads(request.body)
-    username = data['userName']
-    password = data['password']
-    user = authenticate(username=username, password=password)
-    data = {"userName": username}
-    if user is not None:
-        login(request, user)
-        data = {"userName": username, "status": "Authenticated"}
-        request.session['username'] = username
-        login_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-        logger.info(f"User {username} logged in at {login_time}")
-    return JsonResponse(data)
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        username = data['userName']
+        password = data['password']
+        user = authenticate(username=username, password=password)
+        if user is not None:
+            login(request, user)
+            request.session['username'] = username
+            login_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+            logger.info(f"User {username} logged in at {login_time}")
+            return render(request, 'login_success.html', {"userName": username})
+        else:
+            return render(request, 'login_failed.html', {"error": "Invalid credentials"})
+    else:
+        return render(request, 'login.html')
 
-
-# Create a `logout_request` view to handle sign out request
-def logout_request(request):
-    logout(request)
-    messages.success(request, "You have successfully logged out.")
-    data = {"userName": ""}
-    return JsonResponse(data)
-
-
-# Create a `registration` view to handle sign up request
 @csrf_exempt
 def registration(request):
-    data = json.loads(request.body)
-    username = data['userName']
-    password = data['password']
-    first_name = data['firstName']
-    last_name = data['lastName']
-    email = data['email']
-    username_exist = False
-    try:
-        User.objects.get(username=username)
-        username_exist = True
-    except User.DoesNotExist:
-        logger.debug("{} is a new user".format(username))
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        username = data['userName']
+        password = data['password']
+        first_name = data['firstName']
+        last_name = data['lastName']
+        email = data['email']
+        username_exist = False
+        try:
+            User.objects.get(username=username)
+            username_exist = True
+        except User.DoesNotExist:
+            logger.debug("{} is a new user".format(username))
 
-    if not username_exist:
-        user = User.objects.create_user(
-            username=username, first_name=first_name, last_name=last_name,
-            password=password, email=email
-        )
-        login(request, user)
-        data = {"userName": username, "status": "Authenticated"}
-        messages.success(
-            request, f"Welcome {username}! Your account has been created."
-        )
-        return JsonResponse(data)
+        if not username_exist:
+            user = User.objects.create_user(
+                username=username, first_name=first_name, last_name=last_name,
+                password=password, email=email
+            )
+            login(request, user)
+            messages.success(
+                request, f"Welcome {username}! Your account has been created."
+            )
+            return render(request, 'registration_success.html', {"userName": username})
+        else:
+            messages.error(request, "Username already exists.")
+            return render(request, 'registration_failed.html', {"error": "Already Registered"})
     else:
-        data = {"userName": username, "error": "Already Registered"}
-        messages.error(request, "Username already exists.")
-        return JsonResponse(data)
+        return render(request, 'registration.html')
 
-
-# Create a 'get_cars' view to get a list of cars
 def get_cars(request):
     count = CarMake.objects.filter().count()
-    print(count)
     if count == 0:
         initiate()
     car_models = CarModel.objects.select_related('car_make')
     cars = [{"CarModel": car_model.name, 'CarMake': car_model.car_make.name}
             for car_model in car_models]
-    return JsonResponse({"CarModels": cars})
+    return render(request, 'cars.html', {"CarModels": cars})
 
 
 # Update the `get_dealerships` view
