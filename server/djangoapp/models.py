@@ -55,8 +55,8 @@ class CarModel(models.Model):
         ('ELECTRIC', 'Electric'),
     ]
     fuel = models.CharField(
-        max_length=13, 
-        choices=FUEL_TYPES, 
+        max_length=13,
+        choices=FUEL_TYPES,
         default='Petrol'
     )
     mileage = models.IntegerField(
