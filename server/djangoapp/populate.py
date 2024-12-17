@@ -14,27 +14,26 @@ def initiate():
         car_make_instances.append(CarMake.objects.create(name=data['name'], description=data['description'], website=data['website']))
 
     car_model_data = [
-        {"name":"Pathfinder", "type":"SUV", "year": 2023, "car_make":car_make_instances[0], "dealer_id":1, "seating_capacity":7, "number_of_doors":5, "transmission":"automatic", "fuel":"Petrol", "mileage":15000, "engine_size":3500},
-        {"name":"Qashqai", "type":"SUV", "year": 2023, "car_make":car_make_instances[0], "dealer_id":1, "seating_capacity":5, "number_of_doors":5, "transmission":"manual", "fuel":"Diesel", "mileage":20000, "engine_size":1600},
-        {"name":"XTRAIL", "type":"SUV", "year": 2023, "car_make":car_make_instances[0], "dealer_id":1, "seating_capacity":7, "number_of_doors":5, "transmission":"automatic", "fuel":"Hybrid/Petrol", "mileage":10000, "engine_size":2000},
-        {"name":"A-Class", "type":"SUV", "year": 2023, "car_make":car_make_instances[1], "dealer_id":2, "seating_capacity":5, "number_of_doors":5, "transmission":"automatic", "fuel":"Petrol", "mileage":12000, "engine_size":2000},
-        {"name":"C-Class", "type":"SUV", "year": 2023, "car_make":car_make_instances[1], "dealer_id":2, "seating_capacity":5, "number_of_doors":5, "transmission":"manual", "fuel":"Diesel", "mileage":25000, "engine_size":2200},
-        {"name":"E-Class", "type":"SUV", "year": 2023, "car_make":car_make_instances[1], "dealer_id":2, "seating_capacity":5, "number_of_doors":5, "transmission":"automatic", "fuel":"Hybrid/Diesel", "mileage":18000, "engine_size":3000},
-        {"name":"C-300", "type":"Coupe", "year": 2023, "car_make":car_make_instances[1], "dealer_id":2, "seating_capacity":4, "number_of_doors":2, "transmission":"manual", "fuel":"Petrol", "mileage":35000, "engine_size":1991},  
-        {"name":"A4", "type":"SUV", "year": 2023, "car_make":car_make_instances[2], "dealer_id":3, "seating_capacity":5, "number_of_doors":5, "transmission":"automatic", "fuel":"Petrol", "mileage":13000, "engine_size":1800},
-        {"name":"A5", "type":"SUV", "year": 2023, "car_make":car_make_instances[2], "dealer_id":3, "seating_capacity":5, "number_of_doors":5, "transmission":"manual", "fuel":"Diesel", "mileage":22000, "engine_size":2000},
-        {"name":"A6", "type":"SUV", "year": 2023, "car_make":car_make_instances[2], "dealer_id":3, "seating_capacity":5, "number_of_doors":5, "transmission":"automatic", "fuel":"Hybrid/Petrol", "mileage":16000, "engine_size":2400},
-        {"name":"A7", "type":"Hybrid", "year": 2023, "car_make":car_make_instances[2], "dealer_id":3, "seating_capacity":5, "number_of_doors":5, "transmission":"automatic", "fuel":"Hybrid/Diesel", "mileage":35000, "engine_size":1984},
-        {"name":"Sorrento", "type":"SUV", "year": 2023, "car_make":car_make_instances[3], "dealer_id":4, "seating_capacity":7, "number_of_doors":5, "transmission":"automatic", "fuel":"Petrol", "mileage":14000, "engine_size":3300},
-        {"name":"Picanto", "type":"Hatchback", "year": 2022, "car_make":car_make_instances[3], "dealer_id":4, "seating_capacity":5, "number_of_doors":5, "transmission":"automatic", "fuel":"Petrol", "mileage":35000, "engine_size":1197},
-        {"name":"Carnival", "type":"SUV", "year": 2023, "car_make":car_make_instances[3], "dealer_id":4, "seating_capacity":7, "number_of_doors":5, "transmission":"manual", "fuel":"Diesel", "mileage":23000, "engine_size":2900},
-        {"name":"Cerato", "type":"Sedan", "year": 2023, "car_make":car_make_instances[3], "dealer_id":4, "seating_capacity":5, "number_of_doors":4, "transmission":"automatic", "fuel":"Hybrid/Petrol", "mileage":11000, "engine_size":2000},
-        {"name":"Corolla", "type":"Sedan", "year": 2023, "car_make":car_make_instances[4], "dealer_id":5, "seating_capacity":5, "number_of_doors":4, "transmission":"manual", "fuel":"Petrol", "mileage":13000, "engine_size":1800},
-        {"name":"Camry", "type":"Sedan", "year": 2023, "car_make":car_make_instances[4], "dealer_id":5, "seating_capacity":5, "number_of_doors":4, "transmission":"automatic", "fuel":"Diesel", "mileage":19000, "engine_size":2500},
-        {"name":"Kluger", "type":"SUV", "year": 2023, "car_make":car_make_instances[4], "dealer_id":5, "seating_capacity":7, "number_of_doors":5, "transmission":"automatic", "fuel":"Hybrid/Diesel", "mileage":17000, "engine_size":3200},
+        {"name":"Pathfinder", "type":"SUV", "year": 2023, "car_make":car_make_instances[0], "dealer_id":1, "seating_capacity":7, "number_of_doors":5, "transmission":"automatic", "fuel":"Petrol", "mileage":12000, "engine_size":3.5},
+        {"name":"Qashqai", "type":"SUV", "year": 2023, "car_make":car_make_instances[0], "dealer_id":1, "seating_capacity":5, "number_of_doors":5, "transmission":"manual", "fuel":"Diesel", "mileage":20000, "engine_size":2.0},
+        {"name":"XTRAIL", "type":"SUV", "year": 2023, "car_make":car_make_instances[0], "dealer_id":1, "seating_capacity":7, "number_of_doors":5, "transmission":"automatic", "fuel":"Hybrid/Petrol", "mileage":15000, "engine_size":2.5},
+        {"name":"A-Class", "type":"SUV", "year": 2023, "car_make":car_make_instances[1], "dealer_id":2, "seating_capacity":5, "number_of_doors":5, "transmission":"automatic", "fuel":"Petrol", "mileage":13000, "engine_size":2.0},
+        {"name":"C-Class", "type":"SUV", "year": 2023, "car_make":car_make_instances[1], "dealer_id":2, "seating_capacity":5, "number_of_doors":5, "transmission":"manual", "fuel":"Diesel", "mileage":22000, "engine_size":2.2},
+        {"name":"E-Class", "type":"SUV", "year": 2023, "car_make":car_make_instances[1], "dealer_id":2, "seating_capacity":5, "number_of_doors":5, "transmission":"automatic", "fuel":"Hybrid/Diesel", "mileage":14000, "engine_size":3.0},
+        {"name":"C-300", "type":"Coupe", "year": 2023, "car_make":car_make_instances[1], "dealer_id":2, "seating_capacity":4, "number_of_doors":2, "transmission":"manual", "fuel":"Petrol", "mileage":30000, "engine_size":3.0},
+        {"name":"A4", "type":"SUV", "year": 2023, "car_make":car_make_instances[2], "dealer_id":3, "seating_capacity":5, "number_of_doors":5, "transmission":"automatic", "fuel":"Petrol", "mileage":13000, "engine_size":2.0},
+        {"name":"A5", "type":"SUV", "year": 2023, "car_make":car_make_instances[2], "dealer_id":3, "seating_capacity":5, "number_of_doors":5, "transmission":"manual", "fuel":"Diesel", "mileage":22000, "engine_size":2.2},
+        {"name":"A6", "type":"SUV", "year": 2023, "car_make":car_make_instances[2], "dealer_id":3, "seating_capacity":5, "number_of_doors":5, "transmission":"automatic", "fuel":"Hybrid/Petrol", "mileage":15000, "engine_size":2.5},
+        {"name":"A7", "type":"Hybrid", "year": 2023, "car_make":car_make_instances[2], "dealer_id":3, "seating_capacity":5, "number_of_doors":5, "transmission":"automatic", "fuel":"Hybrid/Diesel", "mileage":17000, "engine_size":3.0},
+        {"name":"Sorrento", "type":"SUV", "year": 2023, "car_make":car_make_instances[3], "dealer_id":4, "seating_capacity":7, "number_of_doors":5, "transmission":"automatic", "fuel":"Petrol", "mileage":12000, "engine_size":3.5},
+        {"name":"Picanto", "type":"Hatchback", "year": 2022, "car_make":car_make_instances[3], "dealer_id":4, "seating_capacity":5, "number_of_doors":5, "transmission":"automatic", "fuel":"Petrol", "mileage":8000, "engine_size":1.2},
+        {"name":"Carnival", "type":"SUV", "year": 2023, "car_make":car_make_instances[3], "dealer_id":4, "seating_capacity":7, "number_of_doors":5, "transmission":"manual", "fuel":"Diesel", "mileage":20000, "engine_size":2.2},
+        {"name":"Cerato", "type":"Sedan", "year": 2023, "car_make":car_make_instances[3], "dealer_id":4, "seating_capacity":5, "number_of_doors":4, "transmission":"automatic", "fuel":"Hybrid/Petrol", "mileage":14000, "engine_size":2.0},
+        {"name":"Corolla", "type":"Sedan", "year": 2023, "car_make":car_make_instances[4], "dealer_id":5, "seating_capacity":5, "number_of_doors":4, "transmission":"manual", "fuel":"Petrol", "mileage":11000, "engine_size":1.8},
+        {"name":"Camry", "type":"Sedan", "year": 2023, "car_make":car_make_instances[4], "dealer_id":5, "seating_capacity":5, "number_of_doors":4, "transmission":"automatic", "fuel":"Diesel", "mileage":13000, "engine_size":2.5},
+        {"name":"Kluger", "type":"SUV", "year": 2023, "car_make":car_make_instances[4], "dealer_id":5, "seating_capacity":7, "number_of_doors":5, "transmission":"automatic", "fuel":"Hybrid/Diesel", "mileage":15000, "engine_size":2.5},
         # Add more CarModel instances as needed
     ]
-    
 
     for data in car_model_data:
         CarModel.objects.create(
