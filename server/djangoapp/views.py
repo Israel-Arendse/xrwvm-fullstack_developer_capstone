@@ -31,15 +31,18 @@ def login_user(request):
     data = json.loads(request.body)
     username = data['userName']
     password = data['password']
-    # Try to check if provide credential can be authenticated
+    # Try to check if provided credentials can be authenticated
     user = authenticate(username=username, password=password)
     data = {"userName": username}
     if user is not None:
-        # If user is valid, call login method to login current user
+        # If user is valid, call login method to log in the current user
         login(request, user)
         data = {"userName": username, "status": "Authenticated"}
         # Set session storage for username in the response
         request.session['username'] = username
+        # Log the login time
+        login_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        logger.info(f"User {username} logged in at {login_time}")
     return JsonResponse(data)
 
 
@@ -47,7 +50,9 @@ def login_user(request):
 def logout_request(request):
     # Log out the user
     logout(request)
-    data = {"userName":""}
+    # Add a success message
+    messages.success(request, "You have successfully logged out.")
+    data = {"userName": ""}
     # Return the response
     return JsonResponse(data)
 
@@ -67,11 +72,11 @@ def registration(request):
     email_exist = False
     try:
         # Check if user already exists
-        user.objects.get(username=username)
+        User.objects.get(username=username)
         username_exist = True
-    except:
+    except User.DoesNotExist:
         # If no, simply log this is a new user
-        logger.debug("{} is new user".format(username))
+        logger.debug("{} is a new user".format(username))
 
     # If it is a new user:
     if not username_exist:
@@ -79,10 +84,14 @@ def registration(request):
         user = User.objects.create_user(username=username, first_name=first_name, last_name=last_name, password=password, email=email)
         # Login the user and redirect to list page
         login(request, user)
-        data = {"userName":username, "status":"Authenticated"}
+        data = {"userName": username, "status": "Authenticated"}
+        # Add a success message
+        messages.success(request, f"Welcome {username}! Your account has been created.")
         return JsonResponse(data)
     else:
-        data = {"userName":username, "error":"Already Registered"}
+        data = {"userName": username, "error": "Already Registered"}
+        # Add an error message
+        messages.error(request, "Username already exists.")
         return JsonResponse(data)
 
 # Create a 'get_cars' view to get a list of cars
