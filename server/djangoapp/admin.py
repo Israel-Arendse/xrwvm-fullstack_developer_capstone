@@ -1,6 +1,8 @@
 """
-This module registers the CarMake and CarModel models with the Django admin interface.
-It includes custom admin classes to display and manage car makes and models.
+This module registers the CarMake and 
+CarModel models with the Django admin interface.
+It includes custom admin classes to display
+and manage car makes and models.
 """
 
 from django.contrib import admin
@@ -8,13 +10,18 @@ from .models import CarMake, CarModel
 
 # CarModelInline class
 # pylint: disable=too-few-public-methods
-class CarModelInline(admin.TabularInline):
+class CarModelInline(
+    admin.TabularInline
+    ):
     """
-    Inline admin descriptor for CarModel objects, to be used in the CarMakeAdmin.
-    This allows CarModel objects to be edited inline within the CarMake admin page.
+    Inline admin descriptor for CarModel objects, 
+    to be used in the CarMakeAdmin.
+    This allows CarModel objects to be edited 
+    inline within the CarMake admin page.
     """
     model = CarModel
     extra = 1  # Number of extra forms to display in the admin interface
+
 
 # CarModelAdmin class
 # pylint: disable=too-few-public-methods
@@ -35,6 +42,7 @@ class CarModelAdmin(admin.ModelAdmin):
         'transmission', 'fuel'
     )  # Fields to search through in the admin interface
 
+
 # CarMakeAdmin class with CarModelInline
 # pylint: disable=too-few-public-methods
 class CarMakeAdmin(admin.ModelAdmin):
@@ -47,6 +55,7 @@ class CarMakeAdmin(admin.ModelAdmin):
         'name', 'description'
     )  # Fields to search through in the admin interface
     inlines = [CarModelInline]  # Allows CarModel objects to be edited inline within CarMake
+
 
 # Register models here
 admin.site.register(CarMake, CarMakeAdmin)
