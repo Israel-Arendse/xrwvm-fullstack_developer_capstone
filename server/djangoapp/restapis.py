@@ -31,22 +31,21 @@ def get_request(endpoint, **kwargs):
         print("Network exception occurred")
 
 def analyze_review_sentiments(text):
-    request_url = sentiment_analyzer_url + "analyze/" + text
-    # Add code for retrieving sentiments
+    request_url = sentiment_analyzer_url+"analyze/"+text
     try:
         # Call get method of requests library with URL and parameters
         response = requests.get(request_url)
         return response.json()
     except Exception as err:
-        print(f"Unexcepted {err=}, {type(err)=}")
+        print(f"Unexpected {err=}, {type(err)=}")
         print("Network exception occurred")
 
+# Code for posting a review
 def post_review(data_dict):
-    # Add code for posting review
     request_url = backend_url+"/insert_review"
     try:
-        response = request.post(request_url,json=data_dict)
+        response = requests.post(request_url,json=data_dict)
         print(response.json())
         return response.json()
     except:
-        print("Network execption occurred")
+        print("Network exception occurred")
