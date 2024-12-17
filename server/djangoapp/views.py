@@ -65,7 +65,9 @@ def registration(request):
         )
         login(request, user)
         data = {"userName": username, "status": "Authenticated"}
-        messages.success(request, f"Welcome {username}! Your account has been created.")
+        messages.success(
+            request, f"Welcome {username}! Your account has been created."
+        )
         return JsonResponse(data)
     else:
         data = {"userName": username, "error": "Already Registered"}
@@ -123,6 +125,8 @@ def add_review(request):
             post_review(data)
             return JsonResponse({"status": 200})
         except Exception:
-            return JsonResponse({"status": 401, "message": "Error in posting reviews"})
+            return JsonResponse(
+                {"status": 401, "message": "Error in posting reviews"}
+            )
     else:
         return JsonResponse({"status": 403, "message": "Unauthorized"})
