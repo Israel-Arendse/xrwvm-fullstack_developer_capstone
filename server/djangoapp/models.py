@@ -12,7 +12,8 @@ class CarMake(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField()
     # Other fields as needed
-    website = models.URLField(blank=True, null=True )
+    
+    website = models.URLField(blank=True, null=True)
 
     def __str__(self):
         return self.name # Return the name as the string representation.
@@ -37,6 +38,7 @@ class CarModel(models.Model):
             MaxValueValidator(2023),
             MinValueValidator(2015)
         ])
+    
     # Other fields as needed
     dealer_id = models.IntegerField(default=1)
     seating_capacity = models.IntegerField(default=4)
@@ -64,4 +66,6 @@ class CarModel(models.Model):
         ])
 
     def __str__(self):
-        return self.name # Return the name as the string representation
+        return self.name
+        
+    # Return the name as the string representation
