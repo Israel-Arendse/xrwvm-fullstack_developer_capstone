@@ -54,7 +54,11 @@ class CarModel(models.Model):
         ('GAS', 'Gas'),
         ('ELECTRIC', 'Electric'),
     ]
-    fuel = models.CharField(max_length=13, choices=FUEL_TYPES, default='Petrol')
+    fuel = models.CharField(
+        max_length=13, 
+        choices=FUEL_TYPES, 
+        default='Petrol'
+    )
     mileage = models.IntegerField(
         default=60000,
         validators=[
@@ -69,7 +73,7 @@ class CarModel(models.Model):
             MinValueValidator(500)
         ]
     )
-     # Use 'now' for default value
+    # Use 'now' for default value
     created_at = models.DateTimeField(default=now)
     # Automatically update timestamp
     updated_at = models.DateTimeField(auto_now=True)
