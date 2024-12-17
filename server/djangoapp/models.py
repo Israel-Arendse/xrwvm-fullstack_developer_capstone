@@ -29,8 +29,7 @@ class CarModel(models.Model):
         ('HATCHBACK', 'Hatchback'),
         ('HYBRID', 'Hybrid'),
     ]
-    type = models.CharField
-    (
+    type = models.CharField(
         max_length=10, 
         choices=CAR_TYPES, 
         default='SUV'
