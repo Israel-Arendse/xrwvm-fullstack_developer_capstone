@@ -30,8 +30,8 @@ class CarModel(models.Model):
         ('HYBRID', 'Hybrid'),
     ]
     type = models.CharField(
-        max_length=10, 
-        choices=CAR_TYPES, 
+        max_length=10,
+        choices=CAR_TYPES,
         default='SUV'
     )
     year = models.IntegerField(
@@ -69,8 +69,10 @@ class CarModel(models.Model):
             MinValueValidator(500)
         ]
     )
-    created_at = models.DateTimeField(default=now)  # Use 'now' for default value
-    updated_at = models.DateTimeField(auto_now=True)  # Automatically update timestamp
+     # Use 'now' for default value
+    created_at = models.DateTimeField(default=now)
+    # Automatically update timestamp
+    updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.name
