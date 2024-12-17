@@ -16,6 +16,7 @@ logger = logging.getLogger(__name__)
 
 # Create your views here.
 
+
 # Create a `login_request` view to handle sign-in request
 @csrf_exempt
 def login_user(request):
@@ -32,12 +33,14 @@ def login_user(request):
         logger.info(f"User {username} logged in at {login_time}")
     return JsonResponse(data)
 
+
 # Create a `logout_request` view to handle sign out request
 def logout_request(request):
     logout(request)
     messages.success(request, "You have successfully logged out.")
     data = {"userName": ""}
     return JsonResponse(data)
+
 
 # Create a `registration` view to handle sign up request
 @csrf_exempt
@@ -69,6 +72,7 @@ def registration(request):
         messages.error(request, "Username already exists.")
         return JsonResponse(data)
 
+
 # Create a 'get_cars' view to get a list of cars
 def get_cars(request):
     count = CarMake.objects.filter().count()
@@ -80,13 +84,15 @@ def get_cars(request):
             for car_model in car_models]
     return JsonResponse({"CarModels": cars})
 
+
 # Update the `get_dealerships` view to render the index page with a list of dealerships
 def get_dealerships(request, state="ALL"):
     endpoint = "/fetchDealers" if state == "ALL" else f"/fetchDealers/{state}"
     dealerships = get_request(endpoint)
     return JsonResponse({"status": 200, "dealers": dealerships})
 
-# Create get_dealers view 
+
+# Create get_dealers view
 def get_dealer_reviews(request, dealer_id):
     if dealer_id:
         endpoint = f"/fetchReviews/dealer/{dealer_id}"
@@ -98,6 +104,7 @@ def get_dealer_reviews(request, dealer_id):
     else:
         return JsonResponse({"status": 400, "message": "Bad Request"})
 
+
 # Create a `get_dealer_details` view to render the dealer details
 def get_dealer_details(request, dealer_id):
     if dealer_id:
@@ -106,6 +113,7 @@ def get_dealer_details(request, dealer_id):
         return JsonResponse({"status": 200, "dealer": dealership})
     else:
         return JsonResponse({"status": 400, "message": "Bad Request"})
+
 
 # Create a `add_review` view to submit a review
 def add_review(request):
