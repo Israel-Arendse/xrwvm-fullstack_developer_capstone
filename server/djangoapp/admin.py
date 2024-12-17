@@ -8,11 +8,7 @@ and manage car makes and models.
 from django.contrib import admin
 from .models import CarMake, CarModel
 
-# CarModelInline class
-# pylint: disable=too-few-public-methods
-class CarModelInline(
-    admin.TabularInline
-    ):
+class CarModelInline(admin.TabularInline):
     """
     Inline admin descriptor for CarModel objects, 
     to be used in the CarMakeAdmin.
@@ -22,9 +18,6 @@ class CarModelInline(
     model = CarModel
     extra = 1  # Number of extra forms to display in the admin interface
 
-
-# CarModelAdmin class
-# pylint: disable=too-few-public-methods
 class CarModelAdmin(admin.ModelAdmin):
     """
     Admin descriptor for CarModel objects, defining the fields to display in the list view,
@@ -42,9 +35,6 @@ class CarModelAdmin(admin.ModelAdmin):
         'transmission', 'fuel'
     )  # Fields to search through in the admin interface
 
-
-# CarMakeAdmin class with CarModelInline
-# pylint: disable=too-few-public-methods
 class CarMakeAdmin(admin.ModelAdmin):
     """
     Admin descriptors for CarMake objects, defining the fields to display in the list view,
@@ -55,7 +45,6 @@ class CarMakeAdmin(admin.ModelAdmin):
         'name', 'description'
     )  # Fields to search through in the admin interface
     inlines = [CarModelInline]  # Allows CarModel objects to be edited inline within CarMake
-
 
 # Register models here
 admin.site.register(CarMake, CarMakeAdmin)
