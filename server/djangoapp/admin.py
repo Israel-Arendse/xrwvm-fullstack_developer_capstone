@@ -52,9 +52,10 @@ class CarMakeAdmin(admin.ModelAdmin):
     search_fields = (
         'name', 'description'
     )  # Fields to search through in the admin interface
-    inlines = [CarModelInline]  # Allows CarModel objects to be edited inline within CarMake
+    inlines = [
+        CarModelInline
+    ]  # Allows CarModel objects to be edited inline within CarMake
 
 # Register models here
 admin.site.register(CarMake, CarMakeAdmin)
 admin.site.register(CarModel, CarModelAdmin)
-
