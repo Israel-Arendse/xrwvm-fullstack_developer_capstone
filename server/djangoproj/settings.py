@@ -30,9 +30,8 @@ DEBUG = os.getenv('DJANGO_DEBUG', 'True').lower() in ('true', '1', 't')
 
 ALLOWED_HOSTS = os.getenv('DJANGO_ALLOWED_HOSTS', 'localhost').split(',')
 CSRF_TRUSTED_ORIGINS = os.getenv(
-    'DJANGO_CSRF_TRUSTED_ORIGINS', 'localhost'
-).split(',')
-
+    'DJANGO_CSRF_TRUSTED_ORIGINS', 'http://localhost'
+    ).split(',')
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [],
 }
