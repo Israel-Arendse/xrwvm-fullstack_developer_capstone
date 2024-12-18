@@ -28,10 +28,16 @@ SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'default-secret-key')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DJANGO_DEBUG', 'True').lower() in ('true', '1', 't')
 
-ALLOWED_HOSTS = os.getenv('DJANGO_ALLOWED_HOSTS', 'localhost').split(',')
-CSRF_TRUSTED_ORIGINS = os.getenv(
-    'DJANGO_CSRF_TRUSTED_ORIGINS', 'http://localhost'
-    ).split(',')
+ALLOWED_HOSTS = [
+    'localhost', 
+    'israelarends-8000.theiadockernext-1-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai'
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    'http://localhost', 
+    'https://israelarends-8000.theiadockernext-1-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai'
+]
+
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [],
 }
