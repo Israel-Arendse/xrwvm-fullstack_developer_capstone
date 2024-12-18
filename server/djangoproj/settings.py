@@ -29,12 +29,12 @@ SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'default-secret-key')
 DEBUG = os.getenv('DJANGO_DEBUG', 'True').lower() in ('true', '1', 't')
 
 ALLOWED_HOSTS = [
-    'localhost', 
+    'localhost',
     'israelarends-8000.theiadockernext-1-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai'
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    'http://localhost', 
+    'http://localhost',
     'https://israelarends-8000.theiadockernext-1-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai'
 ]
 
